@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        /* Mobile */
+        div {
+            background: lightcoral;
+        }
+
+
+        @media screen and (min-width: 768px) {
+            div {
+                background: yellow;
+
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            div {
+                background: lightblue;
+            }
+        }
+
+        /* 16:48 / 20:48 */
+        /*  Tablet */
+
+        /* Desktop first: max-width from the big one to the small one */
+        /* Mobile first: min-width from the small one to the big one */
+        /* 576 small devices 768 tablet 1200<desktop */
+        /* REM : root element font-size */
+        /* EM: Parent element font-size */
+    </style>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .d-flex {
+            display: flex;
+
+        }
+
+
+        nav ul {
+            padding: 0;
+            list-style-type: none;
+            background: lightcoral;
+        }
+
+        li,
+        button {
+            padding: 0.75rem 1.25rem;
+            border: 1px solid #d2d2d2;
+            font-size: 1rem;
+        }
+
+        nav {
+            background: lightblue;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        nav img {
+            max-width: 15px;
+        }
+
+        #menu-toggler {
+            display: none;
+        }
+
+        @media screen and (max-width: 756px) {
+
+            #menu-toggler {
+                display: block;
+            }
+
+            ul {
+                flex-direction: column;
+                position: absolute;
+            }
+
+            .sm-d-none {
+                display: none;
+            }
+        }
+    </style>
+    <nav class="d-flex">
+        <div>
+            <button id="menu-toggler">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+                    alt="menu icon">
+            </button>
+            <ul class="d-flex sm-d-none">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div>
+            <button>
+                User
+            </button>
+        </div>
+    </nav>
+    <main>
+        <picture>
+            <source media="(min-width:650px)"
+                srcset="https://images.pexels.com/photos/461940/pexels-photo-461940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            <source media="(min-width:465px)"
+                srcset="https://png.pngtree.com/png-vector/20191121/ourmid/pngtree-blue-bird-vector-or-color-illustration-png-image_2013004.jpg">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFYE2k_Kn_WOSo0BFBKWFhiK6a-ajJQoJy5g&s"
+                alt="Flowers" style="width:auto;">
+        </picture>
+
+    </main>
+
+    <script>
+        const toggleButton = document.querySelector('#menu-toggler');
+        const menu = document.querySelector('nav ul');
+        toggleButton.addEventListener('click', function () {
+            menu.classList.toggle('sm-d-none')
+        })
+    </script>
+</body>
+
+</html>

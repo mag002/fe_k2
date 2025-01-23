@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // shallow
+        // deepCopy
+
+        const book = {
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            year: 1925,
+            details: {
+                genre: "Novel",
+                pages: 218
+            }
+        };
+
+        // ES6 (Rest operator) ...
+        // key_object (loops keys)
+        // Object.assign Object.assign,create,getPrototypeOf
+
+        const shallowBook = { ...book } // ES6
+        const shallowBook2 = {};
+        // array/ loops/ object key 
+        const bookKeys = Object.keys(book)
+
+
+        // deepClone
+
+        for (let index = 0; index < bookKeys.length; index++) {
+            // title, author ,year, details
+            const key = bookKeys[index];
+            const valueOfKey = book[key]
+            console.log(valueOfKey)
+            shallowBook2[key] = book[key]
+        }
+
+
+        // nested object // nest array
+
+        // Bien object thanh string
+
+        // dua vao string do tao object moi
+
+        // Object moi duoc tao ra, khong lien quan gi object cu
+        const bookJSON = JSON.stringify(book);
+        const deepCopyOfBook = JSON.parse(bookJSON)
+
+
+        // Constructor Function?????
+        // 
+    </script>
+</body>
+
+</html>

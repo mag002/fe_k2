@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variable App</title>
+    <link rel="shortcut icon" href="#" />
+
+    <!--Step 2: Style the Page with CSS
+    Add a <style> tag to the <head> section of the HTML file.
+    Define CSS variables in the :root pseudo-class:
+    --base for the base color.
+    --spacing for the padding.
+    --blur for the image blur.
+    Apply the variables to the Div:
+    Use padding for --spacing.
+    Use filter with blur(var(--blur)).
+    Use background with --base.-->
+    <style>
+        :root {
+            --base: ff0000;
+            /*base colour*/
+            --spacing: 25%;
+            /*padding*/
+            --blur: 5px;
+            /*image blur*/
+        }
+
+        .colourDemo {
+            background-color: var(--base);
+            padding: var(--spacing);
+            position: absolute;
+            top: 100px;
+            filter: blur(var(--blur));
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- JS DOM, CSS variables
+     Exercise: Build the CSS Variables App from Scratch
+Use CSS variables.
+Dynamically update styles using JavaScript.
+Handle DOM events like change and mousemove.
+
+Instructions:
+Step 1: Setup the HTML Structure
+Create an HTML file and include the basic structure:
+Add a <h2> for the title: "Update CSS Variables with JS".
+Add a div with a class of controls to hold the inputs.
+Add three inputs:
+A range slider for "Spacing".
+A range slider for "Blur".
+A color picker for "Base Color".
+Add an Div below the controls. -->
+
+    <h2>Update CSS Variables with JS</h2>
+    <div class="controls">
+        <label for="spacingSlider">Spacing:</label>
+        <input type="range" min="1" max="100" value="50" id="spacingSlider">
+
+        <label for="blurSlider">Blur:</label>
+        <input type="range" min="1" max="100" value="50" id="blurSlider">
+
+        <label for="baseColour">Base color:</label>
+        <input type="color" id="baseColour" value="#ff0000">
+    </div>
+
+    <div class="colourDemo">
+        <img id="myImg" src="apple.jpg" width="300" height="300">
+
+    </div>
+
+
+    <script>
+        // Step 3: Add JavaScript to Update CSS Variables
+        // // Write JavaScript to:
+        // Select all input elements inside .controls.
+        // Add event listeners for change and mousemove events.
+        // Update the CSS variables dynamically based on input values.
+        // Hints for StudentsResearch the following topics:
+        // What are CSS variables, and how do you define them?
+        // How does document.documentElement.style.setProperty() work?
+        // What is the difference between change and mousemove events in JavaScript?
+
+        //         spacingSlider
+        // blurSlider
+        // baseColour
+
+        // Select all input elements inside .controls.
+        var spacingSlider = document.getElementById("spacingSlider");
+        var blurSlider = document.getElementById("blurSlider");
+        var colourPicker = document.getElementById("baseColour");
+        var output = document.getElementById("colourDemo");
+
+        //Events listener
+        spacingSlider.addEventListener("input", updatePadding);
+        blurSlider.addEventListener("input", updateBlur);
+        colourPicker.addEventListener("input", updateColour);
+
+
+
+
+
+        // Get the root element
+        const r = document.querySelector(':root');
+        // Get the styles (properties and values) for the root
+        const rs = getComputedStyle(r);
+
+
+        // Update the current slider value (each time you drag the slider handle)
+        // blurSlider.oninput = updateBlur();
+
+
+
+        // Create a function for updating style and sync to image attributes
+        function updateBlur() {
+            let blurValue = blurSlider.value;
+            if (blurValue === null) { blurValue = "5px" };
+            // Set the value of variable --blue to another value (in this case "lightblue")   
+            r.style.setProperty('--blur', blurValue);
+
+            alert("update blur", blurValue);
+
+        }
+
+        function updatePadding() {
+            console.log(this.value)
+            let spacingValue = spacingSlider.Value;
+            if (spacingValue === null) { spacingValue = "25%" };
+            // Set the value of variable --blue to another value (in this case "lightblue")
+            r.style.setProperty('--spacing', spacingValue);
+
+            alert("update padding", spacingValue);
+
+        }
+
+        function updateColour(event) {
+
+            let colourValue = colourPicker.Value;
+            if (colourValue === null) { colourValue = "ff0000" };
+            // Set the value of variable --blue to another value (in this case "lightblue")
+            r.style.setProperty('--base', colourValue);
+
+
+            alert("update colour", colourValue);
+        }
+    </script>
+</body>
+
+</html>

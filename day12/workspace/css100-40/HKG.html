@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .center {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-container {
+            transition: width ease-in-out 10s;
+            width: 300px;
+            height: 300px;
+        }
+
+
+
+        .expanded {
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            top: 0;
+            left: 0;
+            z-index: 10;
+
+            /*QUESTION: ease in out here doesn't seem to work*/
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="frame">
+        <div class="center">
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-1.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-2.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-3.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-4.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-5.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-6.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-7.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-8.jpg"></div>
+            <div class="image-container"><img src="https://100dayscss.com/codepen/40-9.jpg"></div>
+        </div>
+    </div>
+
+    <script>
+        const containers = document.querySelectorAll('.image-container');
+
+
+        containers.forEach(container => {
+            container.addEventListener('click', function () {
+                if (this.classList.contains('expanded')) {
+                    this.classList.remove('expanded');
+                    containers.forEach(c => c.classList.remove('hidden'));
+
+                } else {
+                    this.classList.add('expanded');
+                    containers.forEach(c => {
+                        if (c !== this) {
+                            c.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

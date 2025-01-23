@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- variable
+        - Es6: let/const
+        - Pass by Reference 
+    -->
+
+    <!-- var  -->
+
+    <script>
+        // Scope 
+        // var = function scope
+        // const/let = block scope
+
+
+
+
+        function main() {
+            var a = 10;
+
+            var b = 20;
+            var c = 15;
+            function small() {
+                console.log(a)
+            }
+
+
+
+            function big() {
+                console.log(i)
+                small();
+            }
+
+            for (var i = 0; i < 3; i++) {
+                console.log('i')
+            }
+
+            big();
+        }
+        main();
+
+
+
+        // var 
+        const a = 5;
+        const b = 'chuoi';
+
+        const obj = { name: "Phuc", age: 18 };
+
+
+        console.log(obj)
+
+
+        const arr = [1, 2, 3];
+
+        // declare arr variable (create in stack with scope)
+        // assign value to variable
+        // Primitive: 5 => assign to variable
+        //  Complex: [1,2,3] => Create value in HEAP memory => HEAP return a referrence (dsa2323) 
+        //                  => assign referecen to variable
+        // arr.push(4);
+
+        // console.log(arr)
+
+
+        // Pass by reference
+
+        // variable / Complex data type
+
+        // number/string/boolean/undefined (primitive value)
+        // null/function/object   (complex value)
+
+        // clone arr = arr
+
+        // how to copy an array?
+
+        const clone_arr = [];
+
+        for (let index = 0; index < arr.length; index++) {
+            const element = arr[index];
+            clone_arr.push(element)
+        }
+        console.log(clone_arr)
+
+
+        quick clone arr / obj
+
+        // var/let/const
+
+        // pass by value/pass by reference
+
+
+    </script>
+
+</body>
+
+</html>

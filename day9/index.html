@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        nav {
+            background: #333433;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+            padding-left: 20px;
+            height: 40px;
+            /* all the children floated */
+        }
+
+        ul li {
+            float: left;
+            margin-right: 10px;
+            padding: 10px;
+            color: white;
+        }
+
+        /* pseudo class */
+        ul li:hover {
+            background: #6c6f6c;
+        }
+
+        .banner {
+            height: 20vh;
+            background: #000;
+            position: relative;
+            background-image: url(./Screenshot\ 2024-10-16\ at\ 15.46.36.png)
+        }
+
+        .banner img {
+            height: 75px;
+            width: 75px;
+            border: 2px solid white;
+            border-radius: 100%;
+            position: absolute;
+            bottom: -25%;
+            left: 20px;
+            background-color: black;
+        }
+
+        /* 
+        parent:relative
+        children: absolute
+            khi ma co children la absolute
+        
+        
+        top/left/right/bottom: compare with the default position
+        */
+    </style>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Project</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    <section class="banner">
+        <img src="avatar.png" alt="">
+    </section>
+</body>
+
+</html>

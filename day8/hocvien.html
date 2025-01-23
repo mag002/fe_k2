@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="name">Full name:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email"><br>
+        <label for="pwd">Password</label>
+        <input type="password" id="pwd" name="pwd"><br>
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age"><br>
+        <label for="country">Country</label>
+        <select id="country" name="country">
+            <option value="">Select a country</option>
+            <option value="Vietnam">Viet Nam</option>
+            <option value="Australia">Kanguroo land</option>
+            <option value="China">World's factory</option>
+        </select><br>
+        <label for="tnc"> I accept to Term and Conditions</label>
+        <input type="checkbox" id="tnc" name="t&c"><br>
+        <p>Gender:</p><br>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label><br>
+        <input type="radio" id="others" name="gender" value="Others">
+        <label for="others">Others</label><br>
+        <input type="radio" id="idk" name="gender" value="Prefer not to say">
+        <label for="idk">Prefer not to say</label><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <script>
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (e) {
+            let isValid = true;
+
+            // Get form elements
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('pwd').value;
+            const age = document.getElementById('age').value;
+            const country = document.getElementById('country').value;
+            const tnc = document.getElementById('tnc').checked;
+            const gender = document.querySelector('input[name="gender"]:checked');
+
+            // Validate name
+            if (name === '') {
+                alert('Please enter your full name');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate password
+            if (password.length < 6) {
+                alert('Password must be at least 8 characters long');
+                isValid = false;
+            }
+
+            // Validate age
+            if (age < 18) {
+                alert('Age must be over 18');
+                isValid = false;
+            }
+
+            // Validate country
+            if (!country) {
+                alert('Please select your country');
+                isValid = false;
+            }
+
+            // Validate terms and conditions
+            if (!tnc) {
+                alert('You must accept the Terms and Conditions');
+                isValid = false;
+            }
+
+            // Validate gender
+            if (!gender) {
+                alert('Please select your gender');
+                isValid = false;
+            }
+
+            // Result
+            if (!isValid) {
+                e.preventDefault(); // prevent default
+            } else {
+                alert('Form submitted successfully!');
+                var formData = new FormData(form);
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+                e.preventDefault()
+                form.reset()
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

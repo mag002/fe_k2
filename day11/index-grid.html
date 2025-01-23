@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .d-flex {
+            display: flex;
+
+        }
+
+        nav ul {
+            padding: 0;
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: lightcoral;
+        }
+
+        li,
+        button {
+            padding: 10px 20px;
+            border: 1px solid #d2d2d2
+        }
+
+        nav {
+            background: lightblue;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        img {
+            max-width: 15px;
+        }
+
+        #menu-toggler {
+            display: none;
+        }
+
+        @media screen and (max-width: 756px) {
+            #menu-toggler {
+                display: block;
+            }
+
+            nav ul {
+                grid-template-columns: 1fr;
+                position: absolute;
+            }
+
+            .sm-d-none {
+                display: none;
+            }
+
+            #menu-toggler {
+                display: block;
+            }
+
+            ul {
+                flex-direction: column;
+                position: absolute;
+                background: black;
+            }
+
+            .sm-d-none {
+                display: none !important;
+            }
+        }
+    </style>
+    <nav class="d-flex">
+        <div>
+            <button id="menu-toggler">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+                    alt="menu icon">
+            </button>
+            <ul class=" sm-d-none">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div>
+            <button>
+                User
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        const toggleButton = document.querySelector('#menu-toggler');
+        const menu = document.querySelector('nav ul');
+        toggleButton.addEventListener('click', function () {
+            menu.classList.toggle('sm-d-none')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .loading {
+            width: 300px;
+            height: 30px;
+            border-radius: 5px;
+            border: 3px solid lightgray;
+            display: flex;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .loading>div {
+            width: 0%;
+            background: lightblue;
+            transition: width 3s;
+            transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+        }
+
+        .loading:hover>div {
+            width: 100%;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(1, 1, 1, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            border: 5px solid black;
+            border-bottom-color: rgba(1, 1, 1, 0);
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            transition: all 10s;
+        }
+
+        .loading-overlay:hover>.spinner {
+            transform: rotate(720deg)
+        }
+
+        /* 17:45 21:45 */
+    </style>
+    <!-- <div class="loading-overlay">
+        <div class="loading">
+            <div></div>
+        </div>
+    </div> -->
+    <!-- <div class="loading-overlay">
+        <div class="spinner">
+
+        </div>
+    </div> -->
+    <style>
+        .custom-spinner {
+            position: relative;
+            height: 200px;
+            width: 200px;
+            animation: spin 5s infinite linear;
+            /* animation-delay: 4s; */
+
+        }
+
+        .custom-spinner>div {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            animation: circle 1s alternate infinite;
+            animation-timing-function: linear;
+        }
+
+        .custom-spinner div:nth-child(1) {
+            background: lightblue;
+            top: 0;
+            left: 0;
+            /* animation: square-one 1s forwards alternate infinite; */
+
+        }
+
+        .custom-spinner div:nth-child(2) {
+            background: lightpink;
+            top: 0;
+            left: 100px;
+            /* animation: square-two 1s forwards alternate infinite; */
+
+        }
+
+        .custom-spinner div:nth-child(3) {
+            background: lightgreen;
+            top: 100px;
+            left: 0;
+            /* animation: square-three 1s forwards alternate infinite; */
+
+
+        }
+
+        .custom-spinner div:nth-child(4) {
+            background: lemonchiffon;
+            top: 100px;
+            left: 100px;
+            /* animation: square-four 1s forwards alternate infinite; */
+
+
+        }
+
+        @keyframes circle {
+            from {
+                border-radius: 0;
+            }
+
+            to {
+                border-radius: 100%;
+            }
+        }
+
+        @keyframes square-one {
+            from {
+                top: 0;
+                left: 0
+            }
+
+            to {
+                top: 50px;
+                left: 50px;
+            }
+        }
+
+        @keyframes square-two {
+            from {
+                top: 0;
+                left: 100px;
+            }
+
+            to {
+                top: 50px;
+                left: 50px;
+            }
+        }
+
+        @keyframes square-three {
+            from {
+                top: 100px;
+                left: 0
+            }
+
+            to {
+                top: 50px;
+                left: 50px;
+            }
+        }
+
+        @keyframes square-four {
+            from {
+                top: 100px;
+                left: 100px;
+            }
+
+            to {
+                top: 50px;
+                left: 50px;
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0) scale(0.2);
+            }
+
+            to {
+                transform: rotate(360deg) scale(0.2);
+            }
+
+        }
+    </style>
+    <div class="loading-overlay">
+        <div class="custom-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <button>
+        Submit
+    </button>
+
+</body>
+
+</html>

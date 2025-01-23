@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        :root {
+            --base: #24a7a7;
+            --spacing: 50px;
+            --blur: 0px;
+        }
+
+        .changing {
+            background: var(--base);
+            padding: var(--spacing);
+            filter: blur(var(--blur));
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Update CSS Variables with JS</h2>
+    <div class="controls">
+        <input type="range" min="1" max="200" value="50" class="spacing" title="spacing" />
+        <input type="range" min="0" max="100" value="0" class="blur" title="blur" />
+        <input type="color" value="#24a7a7" class="base" title="color" />
+    </div>
+    <div class="changing">Hello!</div>
+
+    <script>
+        const inputs = document.querySelectorAll(".controls input");
+        function handleUpdate() {
+            console.log(event)
+            const unit = this.className === "base" ? "" : "px";
+
+            document.documentElement.style.setProperty(
+                `--${this.className}`,
+                this.value + unit
+            );
+        }
+
+        console.log(event)
+
+        inputs.forEach((input) => {
+            input.addEventListener("change", handleUpdate);
+            input.addEventListener("mousemove", function () {
+                console.log(event)
+                const unit = this.className === "base" ? "" : "px";
+
+                document.documentElement.style.setProperty(
+                    `--${this.className}`,
+                    this.value + unit
+                );
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

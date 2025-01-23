@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Exercise 1: Inventory System
+        // Create an object to manage a store's inventory. The object should have:
+
+        // Properties:
+        // items: An array of item objects. Each item object should have:
+        // name: The name of the item.
+        // quantity: The quantity in stock.
+        // price: The price of the item.
+
+        // Methods:
+        // addItem(item): Adds a new item to the inventory. If the item already exists, increase its quantity instead of adding a duplicate.
+        // sellItem(itemName, quantity): Decreases the quantity of the specified item if enough stock is available. If not, return a message indicating insufficient stock.
+        // getInventoryValue(): Calculates and returns the total value of all items in the inventory.
+
+        const inventory = {
+            items: [
+
+            ],
+            addItem: function (newItem) {
+                // for~ go through each item in array
+                // Execute the "callback function": 
+                // callback function~ function as a parameter of another funciton and will be execute inside of that function
+                // find detect value of the callback
+                // if 'true' => return that item and end the loop
+                const existingItem = this.items.find(function (item) {
+                    if (item.name === newItem.name) {
+                        return true
+
+                    } else {
+                        return false
+                    }
+                })
+
+                console.log(existingItem)
+                // this.items.push(item)
+            }
+        }
+
+        // 17:25 | 21:25
+
+
+
+
+    </script>
+</body>
+
+</html>

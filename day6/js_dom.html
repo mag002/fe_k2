@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+
+    <!-- Assign via HTML -->
+    <label for="name">Name:</label>
+    <input value="Example" id="name" />
+    <button id="testButton">Add</button>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        #container article {
+            border: 1px solid #d2d2d2;
+            border-radius: 10px;
+            padding: 10px;
+
+        }
+    </style>
+    <script>
+        function createHTML(name) {
+            return `
+               <article>
+                    <p>Name: ${name}</p>
+                    <button>Buy</button>
+                </article>
+        `
+        }
+        // cmd (+shift) + arrow
+        // option (+shift) + arrow 
+
+        const listItem = [];
+        const input = document.querySelector('input');
+        const addButton = document.querySelector('#testButton');
+        const container = document.querySelector('#container')
+        addButton.onclick = function () {
+            // update data
+            const inputValue = input.value;
+            listItem.push({ name: inputValue });
+            console.log(listItem)
+            // sync to UI
+            container.innerHTML = container.innerHTML + createHTML(inputValue)
+            input.value = ""
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

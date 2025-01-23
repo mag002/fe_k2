@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            padding: 5px;
+            height: 200px;
+            background: lightcoral;
+            display: flex;
+            /* flex-direction: row; */
+            align-items: stretch;
+            /* depends on flex-direction */
+            /* - flex-start;  */
+            /* - flex-end;  */
+            /* - center; */
+            /* - space-between; */
+            /* - space-around; */
+            /* - space-evenly; */
+            /* order depends on direction
+            - row (to right) / row-reverser ()
+            - Asc (0,1,2,3)  / (3,2,1,0)
+            order: 0
+            */
+        }
+
+        .container div {
+            background: lightblue;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        /* 
+            Flex:
+            -   Container
+            -   Item (order,flex-shrink,flex-grow,flex-basis)
+        */
+        .placeholder {
+            background: lightgray;
+            min-height: 200px;
+        }
+
+        .small-placeholder {
+            background: lightgray;
+            min-height: 50px;
+        }
+    </style>
+    <div class="container">
+        <div>
+            <div class="small-placeholder"></div>
+        </div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <!-- 18:10 - 22:10 -->
+    <!-- <style>
+        nav {}
+
+        ul {
+            padding: 0px;
+            list-style-type: none;
+            display: flex;
+            background: lightblue;
+            gap: 5px;
+            flex-wrap: wrap;
+
+        }
+
+        li {
+            background: lightcoral;
+            border: 1px solid white;
+            padding: 5px 10px;
+        }
+    </style>
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Project</li>
+            <li>Contact</li>
+            <li>Project</li>
+            <li>Contact</li>
+            <li>Project</li>
+            <li>Contact</li>
+            <li>Project</li>
+            <li>Contact</li>
+        </ul>
+    </nav> -->
+
+
+    <!-- 
+        perfect center
+        Navbar
+
+        17:10 ~ 21:10
+
+        TEMPLATE
+
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Project</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+        
+    -->
+
+    <div>
+        <input type="text">
+        <button>Search</button>
+    </div>
+
+</body>
+
+</html>

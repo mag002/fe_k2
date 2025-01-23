@@ -1,0 +1,56 @@
+/* Apply a background color to the whole page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #add8e6;
+    /* Light blue */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Style the heading */
+h1 {
+    color: red;
+    text-align: center;
+}
+
+/* Style the paragraphs */
+p {
+    color: green;
+    line-height: 1.6;
+}
+
+/* Style the unordered list */
+ul {
+    list-style-type: square;
+    margin: 20px 0;
+}
+
+/* Style the link */
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+/* Add a border to the image */
+img {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+}

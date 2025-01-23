@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            --base: #ffc600;
+            --spacing: 10px;
+            --blur: 10px;
+        }
+
+        img {
+            padding: var(--spacing);
+            background: var(--base);
+            filter: blur(var(--blur));
+            max-width: 30vw;
+        }
+
+        .hl {
+            color: var(--base);
+        }
+
+        /*
+      misc styles, nothing to do with CSS variables
+    */
+
+        body {
+            text-align: center;
+            background: #193549;
+            color: white;
+            font-family: 'helvetica neue', sans-serif;
+            font-weight: 100;
+            font-size: 50px;
+        }
+
+        .controls {
+            margin-bottom: 50px;
+        }
+
+        input {
+            width: 100px;
+        }
+    </style>
+    <html>
+    <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+    <div class="controls">
+        <form action="">
+
+            <label for="spacing">Spacing:</label>
+            <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px"
+                data-test="test value">
+
+            <label for="blur">Blur:</label>
+            <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+            <label for="base">Base Color</label>
+            <input id="base" type="color" name="base" value="#ffc600">
+        </form>
+
+    </div>
+    <img src="" alt="">
+
+    </html>
+
+    <script>
+        const inputs = document.querySelectorAll('input');
+
+        // data-set
+
+        function eventCallback(event) {
+            let suffix = '';
+            if (event.target.dataset.sizing) {
+                suffix = event.target.dataset.sizing
+            }
+            const value = event.target.value;
+            const property = event.target.name;
+            document.documentElement.style.setProperty(`--${property}`, value + suffix)
+            // get/set css variable
+        }
+        for (let index = 0; index < inputs.length; index++) {
+            const inputElement = inputs[index];
+            document.addEventListener('mousemove', eventCallback)
+        }
+        // callback function as a parameter of another funciton
+        // will be executed inside of the parent function
+        // callback will have some pamaters provided by the parent function
+
+    </script>
+</body>
+
+</html>

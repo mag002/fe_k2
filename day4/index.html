@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Day 4</h1>
+    <script>
+        // var num = prompt("Enter a number for the multiplication table:");
+        // num = Number(num);
+
+        // for (var i = 1; i <= 10; i++) {
+        //     console.log(num + "x" + i + "=" + num * i)
+        // }
+
+        // 
+        /*
+                Reuse code
+                function (reusable blocks of code)
+        */
+
+
+
+        function logMultiple() { // Declare function
+            console.log(5);
+            console.log(15);
+            console.log(25);
+        }
+
+
+        // Shortcut tatDen: place (phongngu/phongkhach/all)
+        // Execute
+        logMultiple();
+
+        function turnOffBulbs(place, by) { // var place = undefined
+            console.log("All the Bulbs at " + place + "  turned off by " + by)
+        }
+        // create a function, name: turnOffBulbs
+        // function scope:
+        // var place = undefined, var by = undefined
+        // Assign the code block to function
+
+        turnOffBulbs("Living Room", "Phuc", 'ok'); // place = "Living room"
+        // Execute the turnOffBulbs function
+        // place = "Living Room"
+        // by =  "Phuc"
+        // Run the code blocks
+        // console.log("All the Bulbs at " + place + "  turned off by " + by)
+
+
+        turnOffBulbs("Bed Room");
+        // Execute the turnOffBulbs function
+        // place = "Bed Room"
+        // by = undefined
+        // Run the code blocks
+        // console.log("All the Bulbs at " + "Bed Room" + "  turned off by " + undefined)
+
+        function sum(a, b) {
+
+            // return => break the function
+            // replace at the excuted position with return value
+            return a + b;
+
+        }
+        console.log(sum(5, 15))
+
+        var result = sum(5, 15);
+        // var result = undefined
+
+        // 17:16 ~ 21:16
+        // Chat "done" when you're done
+
+        /*
+        Write a function that:
+            - Takes a name as a parameter and returns a greeting message.
+            - Calculates the square of a number and returns the result.
+        
+        Bonus: Write a function to calculate the factorial of a number using a loop
+        Example: 5 => 120 = 5*4*3*2*1
+                 4 => 24  = 4*3*2*1
+
+
+                 
+        */
+        // not special charaters: eg: .,!@;
+        // not a number
+        // keywords
+
+        // camelCase
+        // kebab-case-
+        // snake_case
+
+        function greeting(name) {
+            return "Hello " + name;
+        }
+
+        function squareNumber(num) {
+            return num * num
+        }
+
+
+        // fibonanci
+        function factorial(num) {
+            var result = num;
+            for (var i = num - 1; i >= 1; i--) {
+                result = result * i
+            }
+            return result
+        }
+
+
+        // Data Type
+
+        // number,string,boolean,null,undefined
+        // function
+
+        var arr = [1, 2, 3, 4]
+        // Array - object;
+
+        // phanLoBanNen
+        var loThuNhat = "Lo 1";
+        var loThuHai = "Lo 2";
+        // ..
+        var loThuMuoi = "Lo 10";
+
+        var miengDat = ["Lo 1", "Lo 2", "Lo 3", "Lo 4"];
+        miengDat[0];
+
+        var numbers = [0, 2, 3, 4, 2, 6, 71, 2, 3];
+
+
+        var arr = [1, 2, 3];
+        var sum = 0;
+        for (var index = 0; index < arr.length; index++) {
+            const element = arr[index];
+            sum = sum + element
+        }
+        console.log(sum)
+        // arr[0]
+        // arr[1]
+        // arr[2]
+        // length:3 
+        // 0 => N(length -1)
+        // for
+
+
+        // di qua tung phan tu trong mang
+        // tinh tong tat ca casc so trong mang
+
+
+        // 17:57 ~ 21:57
+
+        // Arr, Object
+        // JS BASIC
+        // 18:12
+
+        // clean code
+        // => ko viet tat
+
+
+        // userInput
+        // thisIsAVariableToStoreUserInput
+
+        // clean 
+
+        // duyet qua tung phan tu mang
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+
+        }
+        // onboarding => 3 days
+        // middle => 1 weeks, explain, mentor (minor)
+        // junior => 1 month, 
+
+
+        var a = 3;
+        a = "string"
+
+
+    </script>
+</body>
+
+</html>

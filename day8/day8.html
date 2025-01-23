@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        /* Box Modal */
+        div.parent {
+            border: 1px solid black;
+            width: 500px;
+            height: 200vh;
+            background: lightblue;
+
+        }
+
+        div.parent>div {
+            border: 1px solid red;
+            width: 50px;
+            height: 50px;
+            background-color: lightcoral;
+        }
+
+        #first {
+            position: relative;
+
+            /* // relative,aboslute,stickfy,fixed 
+            // !== default */
+        }
+
+        .banner {
+            background: tomato;
+            height: 75vh;
+
+        }
+
+        /* relative => tuong doi => theo chinh vi tri cua no */
+        /* absolute => tuyet doi => theo thang dau tien co position !== default (relative) */
+
+        /* position */
+
+        /* position: fixed - viewport - don't care about parent
+
+        /* flex//center */
+
+        /* position: sticky - viewport - need to be inside of its parent */
+    </style>
+    <div class="banner">Banner</div>
+    <div class="parent">
+        <div id="first">child1</div>
+        <div>child2</div>
+    </div>
+</body>
+
+</html>

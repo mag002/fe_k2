@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 100%;
+        }
+
+        .task-input-container {
+            display: flex;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-Do List</h1>
+    <div class="task-input-container">
+        <input type="text" id="task-input" placeholder="Enter a task" />
+        <button id="add-task" onclick="handleAddTask(event)">Add Task</button>
+    </div>
+    <ul id="task-list"></ul>
+    <script>
+        // Update data
+        // handle UI tuong ung 
+
+
+        // =>
+        // generate todo List by the data
+        // generateTodoList()
+
+
+
+        const listItem = [
+            {
+                id: Date.now(),
+                value: 'First item'
+            },
+            {
+                id: Date.now(),
+                value: '2nd item'
+            },
+            {
+                id: Date.now(),
+                value: '3rd item'
+            }
+        ];
+
+        // handleUI
+        const input = document.querySelector('#task-input');
+        const addButton = document.querySelector('#add-task');
+        const listContainer = document.querySelector('#task-list');
+
+        function generateTaskHTML(taskName, id) {
+            return `
+                    <li>
+                        <p>${taskName}</p>
+                        <div>
+                            <button>edit</button>
+                            <button onclick="handleDeleteTask(event, ${id})">delete</button>
+                        </div>
+                    </li>
+                `
+        }
+
+        function handleAddTask(event) {
+            // get User Input
+            const value = input.value;
+            const id = Date.now();
+            const newTaskHTML = generateTaskHTML(value, id);
+
+            // Update the data
+            const newTaskData = {
+                id,
+                value, // value: value
+            }
+            listItem.push(newTaskData)
+
+            // Add new HTML to listContainer
+            generateTodoListHTML()
+
+            // Clear input value
+            input.value = ""
+        }
+
+        function handleDeleteTask(event, id) {
+            // Update data
+            console.log(event, id)
+
+            // search the item
+            const itemIndex = listItem.findIndex(function (todo) {
+                return todo.id === id
+            })
+
+            // remove that item from array
+            listItem.splice(itemIndex, 1);
+            console.log(listItem)
+
+            // Update the UI 
+            generateTodoListHTML();
+        }
+
+        // Events
+        function generateTodoListHTML() {
+            listContainer.innerHTML = ""
+            for (let index = 0; index < listItem.length; index++) {
+                const item = listItem[index];
+                const itemHTML = generateTaskHTML(item.value, item.id)
+                listContainer.innerHTML = listContainer.innerHTML + itemHTML
+            }
+        }
+        generateTodoListHTML()
+
+    </script>
+</body>
+
+</html>

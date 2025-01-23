@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .placeholder {
+            background: lightgray;
+            min-height: 200px;
+            width: 100%;
+        }
+
+        .gap {
+            gap: 10px;
+        }
+
+        .small-placeholder {
+            background: lightgray;
+            min-height: 50px;
+            width: 100%;
+        }
+
+        nav,
+        section,
+        main {
+            margin-bottom: 10px;
+        }
+
+        nav div:first-child {
+            width: 20%;
+        }
+
+        nav div:last-child {
+            width: 33%;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+    </style>
+    <nav class="flex gap justify-between">
+        <div class="small-placeholder"></div>
+        <div class="small-placeholder"></div>
+    </nav>
+    <section>
+        <div class="placeholder"></div>
+    </section>
+    <main class="flex gap">
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+    </main>
+    <footer class="flex gap">
+        <div class="small-placeholder"></div>
+    </footer>
+</body>
+
+</html>

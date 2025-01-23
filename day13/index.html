@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- 13 14 (Test) [15 16 17] -->
+    <!-- 18 -> advanced -->
+    <style>
+        /* .tooltip {
+            padding: 50px;
+            background: #d2d2d2;
+            width: 500px;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            border: 20px solid green;
+            border-left-color: red;
+            border-right-color: blue;
+            border-bottom-color: #d2d2d2;
+            bottom: 100%;
+            left: 0;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        } */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .example {
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            position: absolute;
+            left: 0px;
+            animation: pingpong 2s linear infinite alternate;
+        }
+
+        /* 
+        @keyframes pingpong {
+            from {
+                left: 0;
+            }
+
+            to {
+                left: calc(100vw - 100px);
+            }
+        } */
+    </style>
+    <div class="example">
+
+    </div>
+
+    <script>
+        const example = document.querySelector('.example')
+        let left = 0;
+        let direction = 1; // 1  | -1
+        let speed = 5;
+        const squareWidth = 100;
+        function move() {
+            console.log(example)
+            if (left + squareWidth >= window.innerWidth || left < 0) {
+                direction = direction * -1
+            }
+            left = left + (direction * 5);
+            example.style.left = left + "px"
+        }
+
+
+
+        const interval = setInterval(function () {
+            move()
+        }, 1)
+    </script>
+
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>

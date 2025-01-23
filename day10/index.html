@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .grid {
+            display: grid;
+            background: lightblue;
+            padding: 10px;
+            gap: 10px;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            height: 100vh;
+            grid-template-columns: 0.5fr 3fr;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        .grid>div {
+            background: lightcoral;
+            min-height: 50px;
+        }
+
+
+        /* 
+            p,div (html => tag selector) 
+            .class (class selector)
+            #id (id selector)
+        
+        
+        
+        */
+
+        /* 18:05 - 22:05 */
+    </style>
+
+
+
+    <!-- Container:
+        - display:grid
+        - grid-template-column
+        - grid-template-row
+        - grid-template-areas:
+        - gap
+        - column-gap
+        - row-gap
+        - align-items/content
+        - justify-items/content
+        
+        Item:
+        - grid-column
+        - grid-row
+        - justify-self
+        - align-self
+        - place-self
+    
+    -->
+    <style>
+        /* 100+100  = 200*/
+        #main-container>#special {
+            color: blue;
+        }
+
+        /* 10+100+1 = 111 */
+        .container>#special {
+            color: red;
+        }
+
+        .bodyClass .sectionClass .parentClass div#special {
+            color: blue;
+
+        }
+
+        .bodyClass .sectionClass .parentClass #special {
+            color: red
+        }
+
+        /* 
+            order: 0.5
+           
+            tag/class/id - 1/10/100 
+
+            inline 10000
+            !important 99999999999
+        */
+
+
+        div p {
+            color: green
+        }
+
+        p.label.error {
+            color: red;
+        }
+
+
+
+        p.ok~p {
+            color: red
+        }
+
+        /* 
+        > : con
+        " ": con/chau'
+
+
+        */
+
+
+
+        /* specificity (a, b, c) with: a is the number of id selector (#id1 > #id2=> 2) (2, 0, 0) with: b is the number of class selector (.a.b.c=> 3) (0, 3, 0) with: c is the number of tag selector (ul li p span) (0, 0, 4) */
+        /* reponsive pseudo ::-webkit-progress-inner-element css animation js animation */
+    </style>
+    <div class="grid">
+        <div style="grid-area: header;">1</div>
+        <div style="grid-area: sidebar;">2</div>
+        <div style="grid-area: main;" class="container" id="main-container">
+            <p class="p1" id="special" style="color:yellow!important">Lorem, ipsum dolor.</p>
+            <p class="p2">Porro, enim? Accusantium!</p>
+            <p>Distinctio, recusandae delectus.</p>
+        </div>
+        <div style="grid-area: footer;">5</div>
+
+        <div class="bodyClass">
+            <div class="sectionClass">
+                <div class="parentClass">
+                    <div id="special">
+                        special
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <span>
+                <p class="ok">ok</p>
+                <p>ok</p>
+                <p>ok</p>
+                <p>ok</p>
+                <p>ok</p>
+                <p>ok</p>
+                <p>ok</p>
+            </span>
+        </div>
+
+    </div>
+</body>
+
+</html>

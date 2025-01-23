@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="registration-form">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" max="20" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="">Select your country</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+            <option value="ca" selected>Canada</option>
+        </select><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" checked value="female" required>
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other" required>
+        <label for="other">Other</label><br><br>
+
+        <label>
+            <input checked type="checkbox" id="terms" name="terms" required>
+            I agree to the terms and conditions
+
+        </label><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+    <script>
+        document.getElementById("registration-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get values
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const age = document.getElementById("age").value;
+            const country = document.getElementById("country").value;
+            const gender = document.querySelector('input[name="gender"]:checked')?.value;
+            const terms = document.getElementById("terms").checked;
+
+            // Validation
+            if (!fullName) {
+                alert("Full Name is required.");
+                return;
+            }
+            if (!email.includes("@")) {
+                alert("Please enter a valid email.");
+                return;
+            }
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return;
+            }
+            if (age < 18) {
+                alert("You must be at least 18 years old.");
+                return;
+            }
+            if (!country) {
+                alert("Please select your country.");
+                return;
+            }
+            if (!gender) {
+                alert("Please select your gender.");
+                return;
+            }
+            if (!terms) {
+                alert("You must agree to the terms and conditions.");
+                return;
+            }
+
+            // Log values
+            console.log("Full Name:", fullName);
+            console.log("Email:", email);
+            console.log("Password:", password);
+            console.log("Age:", age);
+            console.log("Country:", country);
+            console.log("Gender:", gender);
+            console.log("Terms Accepted:", terms);
+        });
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2-6}$/; // Top-Level Domain (TLD) pattern
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+ /.../ = regular expression
+ ^ = start of string | $ = end of string    -->

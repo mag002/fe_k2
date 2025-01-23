@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        /* •	P1: hover effect in CSS, float
+•	P2: background-size, background-color, position, border-radius
+•	P3: padding */
+
+
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+        }
+
+        nav {
+            background: #343434;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+            padding-left: 20px;
+            height: 45px;
+
+        }
+
+        ul li {
+            float: left;
+            margin-right: 10px;
+        }
+
+        ul li:hover {
+            background: #b6b6b6;
+        }
+
+        .no-underline {
+            color: white;
+            text-decoration: none;
+        }
+
+
+        .banner {
+            height: 20vh;
+            position: relative;
+            background: #303030;
+            /* background-image:linear-gradient(90deg,lightblue,lightcoral) ; */
+            background-image: url(banner_img.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+
+
+
+        }
+
+        .banner img {
+            height: 75px;
+            width: 75px;
+            border: 2px solid white;
+            border-radius: 100%;
+            position: relative;
+            bottom: -75%;
+            left: 20px;
+            background-color: black;
+
+        }
+
+        p {
+            padding-left: 20px;
+
+        }
+
+        h2 {
+            padding-top: 20px;
+            padding-bottom: 30px;
+
+        }
+
+        .skills {
+            list-style-type: disc;
+        }
+
+        .skills li {
+            float: none;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px black solid;
+
+        }
+
+
+        .content {
+            padding-top: 50px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 30px;
+
+        }
+
+        footer {
+            position: fixed;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: 0;
+            text-align: center;
+        }
+    </style>
+
+    <nav>
+        <ul>
+            <li><a href="home.html" class="no-underline">Home</a></li>
+            <li><a href="about.html" class="no-underline">About Me</a></li>
+            <li><a href="projects.html" class="no-underline">Projects</a></li>
+            <li><a href="contact.html" class="no-underline">Contact</a></li>
+        </ul>
+
+
+    </nav>
+
+    <div class="banner">
+        <img src="avatar.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="content">
+        <h1>Angie Nguyen's Portfolio</h1>
+        <p>Hi! I'm Angie Nguyen, a web developer with a passion of creating beautiful, user-friendly and functional
+            websites. Welcome to my portfolio!</p>
+
+
+
+        <h2>Skills</h2>
+        <ul class="skills">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>SQL</li>
+            <li>Data Modelling</li>
+        </ul>
+
+        <h2>Work Experience</h2>
+        <table class="work-experience">
+            <tr>
+                <th>Timeline</th>
+                <th>Company</th>
+                <th>Title</th>
+            </tr>
+            <tr>
+                <td>2022 - Present</td>
+                <td>PK</td>
+                <td>Quality Controller</td>
+            </tr>
+            <tr>
+                <td>2015 - 2017</td>
+                <td>TPBank</td>
+                <td>Technical BA Lead</td>
+            </tr>
+            <tr>
+                <td>2008 - 2015</td>
+                <td>Public Bank Vietnam</td>
+                <td>IT Auditor</td>
+            </tr>
+            <tr>
+                <td>2001 - 2008</td>
+                <td>FPT Corp</td>
+                <td>Software Engineer</td>
+            </tr>
+        </table>
+
+        <h2>Projects</h2>
+        <p><a href="projects.html">Projects</a></p>
+
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Angie Nguyen. All rights reserved.</p>
+        <p></p>
+        <p><a href="https://github.com/DaGiangNguyen">GitHub</a>&nbsp;&nbsp;<a
+                href="https://www.linkedin.com/in/nguyendagiang">LinkedIn</a></p>
+    </footer>
+
+</body>
+
+</html>l

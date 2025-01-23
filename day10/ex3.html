@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Content Cards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .card button {
+            background: lightblue;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card button:hover {
+            background: darkblue;
+        }
+    </style>
+    <div class="cards">
+        <div class="card">
+            <h3>Card 1</h3>
+            <p>This is the first card.</p>
+            <button>Read More</button>
+        </div>
+        <div class="card">
+            <h3>Card 2</h3>
+            <p>This is the second card.</p>
+            <button>Read More</button>
+        </div>
+        <div class="card">
+            <h3>Card 3</h3>
+            <p>This is the third card.</p>
+            <button>Read More</button>
+        </div>
+        <div class="card">
+            <h3>Card 4</h3>
+            <p>This is the fourth card.</p>
+            <button>Read More</button>
+        </div>
+        <div class="card">
+            <h3>Card 5</h3>
+            <p>This is the fifth card.</p>
+            <button>Read More</button>
+        </div>
+        <div class="card">
+            <h3>Card 6</h3>
+            <p>This is the sixth card.</p>
+            <button>Read More</button>
+        </div>
+    </div>
+</body>
+
+<!-- 
+a11y
+figma design
+- Project flow
+ + 
+- Agile / Scrum / Waterfall / Kanban
+- Deployment
+
+
+
+
+-->
+
+</html>

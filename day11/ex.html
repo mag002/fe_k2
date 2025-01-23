@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        nav img {
+            max-width: 40px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .d-flex {
+            display: flex;
+
+        }
+
+
+        nav ul {
+            padding: 0;
+            list-style-type: none;
+            color: white
+        }
+
+        li,
+        button {
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+        }
+
+        nav {
+            background: #333;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        #menu-toggler img {
+            max-width: 15px;
+        }
+
+        #menu-toggler {
+            display: none;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list li {
+            cursor: pointer;
+        }
+
+        .profile img {
+            border-radius: 50%;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 20% 80%;
+            height: calc(100vh - 60px);
+            /* Adjust for header height */
+        }
+
+        .profile-picture {
+            border-radius: 100%;
+            padding: 5px;
+        }
+
+        .sidebar {
+            background: #444;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 15px 0;
+            cursor: pointer;
+        }
+
+        .main-content {
+            padding: 20px;
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+            gap: 20px;
+        }
+
+        .analytics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: lightblue;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: #f4f4f4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background: #f4f4f4;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .analytics {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .chart-placeholder {
+                height: 150px;
+            }
+
+            table th,
+            table td {
+                padding: 8px;
+            }
+
+            #menu-toggler {
+                display: block;
+            }
+
+            ul {
+                flex-direction: column;
+                position: absolute;
+            }
+
+            .sm-d-none {
+                display: none;
+            }
+        }
+    </style>
+
+    <header>
+        <nav class="d-flex">
+            <div>
+                <button id="menu-toggler">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
+                        alt="menu icon">
+                </button>
+                <ul class="d-flex sm-d-none">
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div>
+                <img class="profile-picture"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAABSpJREFUWEfNWH1MlVUY/x3uBbyFWejUSEZKH2IL25gJWupK25pZrlXGoBJaqKhlNUtatcKwNcNGpElOqzlaiUEbYYqZtEy2LMvZjDXL4VxNcIFwxQtkt533vl/nvOc957z0T+9fcM9znvN7fs/nOaSrojEO66N/Efu//8UfxA2QYnPQuvFZqK1Vf0neKn1JMR+kq6IpTmHxEChSQjjAJsP2oRzj/xWMCCLDoJ9PgwHyg2n+7jbKJ6TcGjiArHLxUYKDAkRrUJZNgHrbCAjiPlGqg1F1imjdC1Ajkz3xqoNuJDI0D5gy41Lia61lAJ8wxl4JRxqGW8dzMZjIYqly0WqAA1nymOMFhY2NcUkWqyJGWBR8K6mKAN8K4udiZclRxRTP8AgZFzIo4q6j+zR+6T7NwMoZn4Wp4zIlUAmOn/0dv/31B1JCYSQnhZEcCiF34hSkR65gAse3eooZ5MTjQMuv7Shp3MiAyRg9Ft+W1eLylFFCkD0X+5G3ZTmiQzHb9WkpERwqext0r/ejrYumrrNiMKgbbeXNNdj989eM3uW3LkLlnSVCgCuba9DAyW9Z9BQeuGmuciixMGm1usTpBOdj/SioW41zA+cZ97Q8sgEzJk1lQLae/B7FDRuY3+7LmY1ti59VRa+5nmgLkk4ibmltp37CQx9XModkp2fg4OObMCqcYgDvjfVjlm1IQnTcZWOMcLgqkuYBKPMgy6Bmpq1r3Y4dR1sAV3A8M/tBrJtTaJTUNV9sxkfHDjBAdhe+gjnX5irZ48FKY9ARZpvbhaEY5m1/Gp29ZxlXHyitRle0B4W7XmN+XzbjHqyfX+oPjhpKfCZR7TrItbgjZzqwcOcLruZGkDE6HX2DA4gOXbTBUPd/VVqNSHKqkj0r1hMjSYIe/yRhBlZxlFS11aOm/VPhwdYOyurNEybLurQYuNXrtRkUqBm6NIy7PngOJ7o6XauOMS/OK8aTBfdrMueqfa6G6R1Y3YVSEhuGujhworvTiEfrs+DlXXMDmourEE4KBQbo3iCdqHU0n+r5EzO3rvSYP3fydOx6+GWQOPHebexKx955qGycSxZ5oRaVHVey/B2/hMX1L+G7Mx3msMLG6lsLy1GUO99rp6qcudbtW50OW7wb32lvQmXbTo973bqOrHgXWVdOMKqIUTYDfgFaHauZJoYVexZvaakRRAedEkNpzc/MQVNRJUIkKSA0s+gYWWxQardnJ4d8XDz8zzAWcNlLp5TDy2pRfagBH/64jwHz6h1LsWLmvQKA6jHFZlAt6uj31D8CbLq7HMXTF6Bv8ALyt5bj3ECfscHS+80TNbhROjsyuWuTJHCxq8EZccNCtzqIW11+5jR8VrQeSRQOAUQDRe7EbOx59HWkhsJ2l7BKFfMeZHtN1UkEDmF7sCNwuKwW142dZFpNxyRgzZ7NqD/2JQghiNPaCmDtbUuw9vYlylg0oJmdjHRXNJrblfvw/L738P7RvYyg0y1YpntjUcyqW+Vx9d7H3kBexvWC6z/vOXeSqLEJ3TZtfBb2l7yJZKtbcEm1/+QPKGqoYrSrhgfhuCXCxwsW1K0yLj+mXYY7W5duxC1XZ0vv1Ks/r8Unxw8yt046etERzLqOm9EmvLIyz29GpKiqvAbbgURk3Yqazj5gmo9DUpDSAV1ycRfDZh+knFudnSiBxi3Ro2YQujTeBnl1bC/mapCwTmkCClL4ZSrVvdjjbv+jEwPByKGJdiYABqDenkoC7NEkXSimZjCwdvYGqL3dJzH/BaNeRcfWD24sAAAAAElFTkSuQmCC"
+                    alt="Profile Picture">
+            </div>
+        </nav>
+    </header>
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <ul>
+                <li>Dashboard</li>
+                <li>Users</li>
+                <li>Reports</li>
+                <li>Settings</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section class="analytics">
+                <div class="card">Total Users: 1,234</div>
+                <div class="card">Revenue: $12,345</div>
+                <div class="card">New Signups: 234</div>
+                <div class="card">Active Users: 567</div>
+            </section>
+            <section class="chart">
+                <h2>Analytics Chart</h2>
+                <div class="chart-placeholder">Chart Placeholder</div>
+            </section>
+            <section class="table">
+                <h2>Recent Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024-01-01</td>
+                            <td>John Doe</td>
+                            <td>$123</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>2024-01-02</td>
+                            <td>Jane Smith</td>
+                            <td>$456</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

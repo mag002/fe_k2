@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loading-overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .spinner {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            /* animation: spinonly 2s; */
+            animation-delay: 4s;
+        }
+
+
+
+        .spinner div:nth-child(1) {
+            background: lightblue;
+            top: 0;
+            left: 0;
+            animation: square-one 10s forwards;
+        }
+
+        .spinner div:nth-child(2) {
+            background: lightcoral;
+            top: 0;
+            right: 0;
+            /* animation: square-two 1s forwards; */
+            animation-delay: 1s
+        }
+
+        .spinner div:nth-child(3) {
+            background: lightgreen;
+            bottom: 0;
+            left: 0;
+            /* animation: square-three 1s forwards; */
+            animation-delay: 2s
+        }
+
+        .spinner div:nth-child(4) {
+            background: lightsalmon;
+            bottom: 0;
+            right: 0;
+            /* animation: square-four 1s forwards; */
+            animation-delay: 3s
+        }
+
+
+        .spinner>div {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            animation-fill-mode: forwards;
+            /* animation: spinner-grow-rotate 4s infinite; */
+            /*QUESTION: apply animation này vô thằng cha hay con? Hiện tại animation này chưa chạy như mong muốn*/
+            /* animation-delay: 6s; */
+        }
+
+        @keyframes square-one {
+            from {
+                top: 0;
+                left: 0;
+            }
+
+            to {
+                top: 50px;
+                left: 50px
+            }
+        }
+
+
+        @keyframes square-three {
+            from {
+                bottom: 0;
+                left: 0;
+            }
+
+            to {
+                top: 50px;
+                left: 50px
+            }
+        }
+
+        @keyframes square-four {
+            from {
+                bottom: 0;
+                right: 0;
+            }
+
+            to {
+                top: 50px;
+                left: 50px
+            }
+        }
+
+        /* 10s 
+        0 -> 10% {top left} (1s)
+        10 -40% ( the same) (3s)
+        40 -> 50% (spin)         
+        
+            div1 (move to center (1s) => wait (3s) => spin (6s))
+            div2 (wait 1s => move to center(1s) => wait (2s) spin (6s))
+            div3 (wait 2s => move to center(1s) => wait (1s) spin (6s)) 
+            div4 (wait 3s => move to center(1s) => spin (6s))
+        */
+
+
+        @keyframes square-one {
+            0% {
+                top: 0;
+                left: 0;
+            }
+
+            30% {
+                top: 50px;
+                left: 50px
+            }
+
+            40% {
+                transform: rotate(0deg);
+                top: 50px;
+                left: 50px
+            }
+
+            50% {
+                top: 50px;
+                left: 50px;
+                transform: rotate(180deg);
+                width: 150px;
+                height: 150px;
+                border-radius: 25%;
+            }
+
+            100% {
+                transform: rotate(360deg);
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+
+        }
+
+        @keyframes spinonly {
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spinner-grow-rotate {
+            0% {
+                transform: rotate(0deg);
+                width: 100px;
+                height: 100px;
+                border-radius: 0;
+            }
+
+            50% {
+                transform: rotate(180deg);
+                width: 150px;
+                height: 150px;
+                border-radius: 25%;
+            }
+
+            100% {
+                transform: rotate(360deg);
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To-Do List</h1>
+    <input type="text" id="task-input" placeholder="Enter a task" />
+    <button id="add-task">Add Task</button>
+    <ul id="task-list"></ul>
+
+    <script>
+        // DOM Elements
+        const taskInput = document.getElementById("task-input");
+        const addTaskButton = document.getElementById("add-task");
+        const taskList = document.getElementById("task-list");
+
+        // Add Task
+        addTaskButton.addEventListener("click", () => {
+            const taskText = taskInput.value.trim();
+            if (taskText) {
+                createTask(taskText);
+                taskInput.value = ""; // Clear the input field
+            }
+        });
+
+        // Function to create a new task
+        function createTask(taskText) {
+            const listItem = document.createElement("li");
+
+            // Task text
+            const taskSpan = document.createElement("span");
+            taskSpan.innerText = taskText;
+
+            // Edit button
+            const editButton = document.createElement("button");
+            editButton.innerText = "Edit";
+            editButton.addEventListener("click", () => updateTask(taskSpan));
+
+            // Delete button
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.addEventListener("click", () => listItem.remove());
+
+            // Append elements to list item
+            listItem.appendChild(taskSpan);
+            listItem.appendChild(editButton);
+            listItem.appendChild(deleteButton);
+
+            // Append list item to task list
+            taskList.appendChild(listItem);
+        }
+
+        // Function to update a task
+        function updateTask(taskSpan) {
+            const newTaskText = prompt("Edit your task:", taskSpan.innerText);
+            if (newTaskText !== null && newTaskText.trim() !== "") {
+                taskSpan.innerText = newTaskText.trim();
+            }
+        }
+    </script>
+</body>
+
+</html>

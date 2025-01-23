@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning and Spacing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            /* Ensures the header stays on top */
+        }
+
+        .container {
+            display: flex;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+
+        .sidebar {
+            background-color: lightcoral;
+            width: 200px;
+            height: 400px;
+            padding: 20px;
+            position: fixed;
+            top: 100px;
+            left: 10px;
+            z-index: 999;
+            /* Ensures the sidebar is above other content */
+        }
+
+        .main-content {
+            background-color: white;
+            flex-grow: 1;
+            margin-left: 220px;
+            /* Account for the fixed sidebar width */
+            padding: 20px;
+            position: relative;
+            /* Needed for absolute positioning inside */
+        }
+
+        .content-box {
+            background-color: lightgreen;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            position: relative;
+            /* Default positioning */
+        }
+
+        /* Content Box Specific Positioning */
+        .content-box:first-child {
+            position: relative;
+            top: 10px;
+            left: 15px;
+            background-color: lightyellow;
+            /* Highlighted for visibility */
+        }
+
+        .content-box:nth-child(2) {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background-color: lightpink;
+            /* Highlighted for visibility */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: lightgray;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        /* Call-to-Action Box */
+        .cta-box {
+            background-color: orange;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <header class="header">Header (Sticky)</header>
+    <div class="container">
+        <aside class="sidebar">Sidebar (Fixed)</aside>
+        <main class="main-content">
+            <section class="content-box">Content Box 1 (Relative)</section>
+            <section class="content-box">Content Box 2 (Absolute)</section>
+        </main>
+    </div>
+    <footer class="footer">Footer (Static)</footer>
+    <div class="cta-box">Sign Up Now!</div>
+</body>
+
+</html>
