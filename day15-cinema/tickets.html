@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/MOCK_DATA_SEATS.js"></script>.
+</head>
+
+<body>
+    <style>
+        #date-time-screen {
+            background: #F34646;
+            min-height: 100vh;
+            width: 35%;
+            background-image: url(assets/doctor_strange.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .details {
+            height: 75%;
+            background-image: linear-gradient(360deg, black 70%, rgba(0, 0, 0, 0.5), transparent);
+            margin-top: auto;
+            width: 100%;
+        }
+
+        #seats-screen {
+            background: #140202;
+            min-height: 100vh;
+            width: 65%;
+        }
+
+        .screen-container {
+            display: flex;
+            width: 100vw;
+        }
+
+
+
+        @media screen and (max-width: 768px) {
+            #date-time-screen {
+
+                width: 100%;
+            }
+
+            #seats-screen {
+
+                width: 100%;
+            }
+
+            .screen-container {
+                flex-wrap: wrap;
+            }
+
+            .hide {
+                display: none;
+            }
+
+            .details {}
+
+        }
+    </style>
+    <div class="screen-container">
+        <div id="date-time-screen">
+            <div class="details">
+
+            </div>
+            <button id="reservation-btn" style="display:none">
+                reservation
+            </button>
+        </div>
+        <div id="seats-screen">
+            <button id="back-screen-btn" data-test="ok">back</button>
+            <div class="seat-container">
+
+            </div>
+        </div>
+    </div>
+    <style>
+        .test {
+            display: flex;
+            gap: 10px;
+            background: lightblue;
+            width: 100vw;
+            margin-top: 100px;
+            justify-content: center;
+            margin-bottom: 100px;
+        }
+
+        .item {
+            height: 20px;
+            width: 20px;
+            background: black;
+        }
+
+        .seat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .seat-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .seat {
+
+            color: white;
+
+        }
+
+        .seat path {
+            fill: #D9D9D9
+        }
+
+
+        .booked path {
+            fill: red
+        }
+
+        .selected path {
+            fill: #00FFE0
+        }
+
+        .selected {
+            animation: zoom 0.2s 1 ease-in-out;
+        }
+
+        .shake {
+            animation: shake 0.2s 5 ease-in-out;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-3px, 0);
+            }
+
+            100% {
+                transform: translate(3px, 0);
+            }
+        }
+
+        /* .isVip {
+            border: 1px solid yellow;
+        } */
+        .seat-row:nth-child(1)>.seat:nth-child(3) {
+            margin-right: 70px;
+        }
+
+        .seat-row:nth-child(2)>.seat:nth-child(4) {
+            margin-right: 50px;
+        }
+
+        .seat-row:nth-child(2) {
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+    <script>
+
+
+        const reservationBtn = document.querySelector('#reservation-btn');
+        const backScreenBtn = document.querySelector('#back-screen-btn');
+
+        const dateTimeScreen = document.querySelector('#date-time-screen');
+        const seatScreen = document.querySelector('#seats-screen');
+        const seatContainer = document.querySelector('.seat-container')
+
+        reservationBtn.addEventListener('click', function () {
+            dateTimeScreen.classList.add('hide');
+            seatScreen.classList.remove('hide')
+        })
+
+        backScreenBtn.addEventListener('click', function () {
+            seatScreen.classList.add('hide');
+            dateTimeScreen.classList.remove('hide')
+        })
+        const seatIconHTML = `<svg width="36" height="27" viewBox="0 0 36 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.125 5.5C0.125 4.18832 1.18832 3.125 2.5 3.125H4.875C6.18668 3.125 7.25 4.18832 7.25 5.5V17.375C7.25 18.6867 8.31332 19.75 9.625 19.75H26.25C27.5617 19.75 28.625 18.6867 28.625 17.375V5.5C28.625 4.18832 29.6883 3.125 31 3.125H33.375C34.6867 3.125 35.75 4.18832 35.75 5.5V20.9375C35.75 24.2167 33.0917 26.875 29.8125 26.875H6.0625C2.78331 26.875 0.125 24.2167 0.125 20.9375V5.5Z" />
+<path d="M8.4375 4.3125C8.4375 2.34499 10.0325 0.75 12 0.75H23.875C25.8425 0.75 27.4375 2.34499 27.4375 4.3125V17.375C27.4375 18.0308 26.9058 18.5625 26.25 18.5625H9.625C8.96916 18.5625 8.4375 18.0308 8.4375 17.375V4.3125Z" />
+</svg>
+`
+        // seatData[0]
+
+        const rowLayous = [6, 8, 8, 9, 9, 9];
+        let seatIndex = 0;
+
+        rowLayous.forEach(function (item) {
+            const rowElement = document.createElement('div');
+            rowElement.classList.add('seat-row');
+
+            for (let i = 0; i < item; i++) {
+                const seatElement = document.createElement('div');
+                seatElement.classList.add('seat');
+                const seatContent = seatIndex;
+
+                // seat Data
+                const currentSeat = seatData[seatIndex];
+                // seatElement.textContent = currentSeat.id;
+                seatElement.innerHTML = seatIconHTML
+
+                if (currentSeat.isVip) {
+                    seatElement.classList.add('isVip')
+                }
+                if (!currentSeat.available) {
+                    seatElement.classList.add('booked')
+                }
+                seatElement.addEventListener('click', function (e) {
+                    // handle click logic
+                    // available => change color to green
+                    // green => gray
+                    // red => alert (not available)
+                    // <!-- 17:36 | 21:36 -->
+                    if (currentSeat.available) {
+                        seatElement.classList.toggle('selected')
+                    } else {
+                        seatElement.classList.add('shake');
+                        setTimeout(function () {
+                            seatElement.classList.remove('shake');
+
+                        }, 500)
+                    }
+
+                })
+
+
+                rowElement.appendChild(seatElement)
+                seatIndex++;
+
+            }
+            seatContainer.appendChild(rowElement)
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
