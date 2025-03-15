@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const myPromise = new Promise((resolve, reject)=>{
+        //     let success = false;
+        //     // abc xyz
+        //     setTimeout(()=>{
+        //         if(success){
+        //         resolve(2000000);
+        //         } else{
+        //             reject("Promise Rejected!!!");
+        //         }
+        //     },1000)
+        // })
+
+        // myPromise= {
+        //     resolve: function(data){
+        //         this.then(data)
+        //     },
+        //     then: function(callback){
+        //         if(typeof callback !== 'function'){
+        //             return
+        //         }
+        //         callback()
+        //     }
+        // }
+
+        // myPromise.then((result)=>{
+        //     console.log("I'm so happy with this result:",result)
+        // }).catch(e=>{
+        //     console.log("Huhuhu!",e)
+        // })
+
+
+        // // const a = fetch('https://dummyjson.com/products/1')
+        // function getProducts(userId) {
+        //     const a= new Promise(function(resolve,reject){
+        //         // .... 
+        //     })
+        //     return a;
+        // }
+
+
+        // getProducts(productId)
+        // .then(productData=>{
+        //     return getReviews(productData)
+        // })
+        // .then(reviewData=>{
+        //     return getUserData(reviewData)
+        // })
+        // .then(userData=>{
+        //     //done
+        // })
+        // .catch(e=>{
+        //     console.log(e)
+        // })
+
+
+        // // callback Hell
+        // getProducts((data) => {
+        //     // 1000s
+        //     getReviews(productId, (reviewData) => {
+        //         // 1000s
+        //         getUsers(reviewData, (userData) => {
+        //             getProducts((data) => {
+        //             })
+        //         })
+        //     })
+        // })
+
+
+        // product 
+
+        // product (id)
+        // reviews (review theo product id)
+        // users profile (user profile theo user id tu reviews)
+
+        // audio stream
+
+
+        // // callback hell
+        // async awaiot
+
+        // getProduct(productId);
+        // let result;
+
+        // async / await
+
+        // mock server 
+
+        // Promise Hell
+        const request = fetch('https://dummyjson.com/products/1').then(response => {
+            if (response.status === 200) {
+                return response.json()
+            } else {
+                throw new Error('call failed!')
+            }
+        }).then(data => {
+            throw new Error('fail to get Data')
+            console.log(data)
+        }).catch(e => {
+            console.log(e)
+        })
+        throw new Error("BLAH BLAH BLAH!")
+
+        // 17:40 : 21:40
+
+    </script>
+</body>
+
+</html>
+
+
+<!--
+
+
+FETCH  + Bootstrap
+
+
+
+-->

@@ -48,7 +48,12 @@
             background: lightblue;
             position: absolute;
             left: 0px;
+            border-radius: 100%;
             animation: pingpong 2s linear infinite alternate;
+        }
+
+        .example:nth-child(2) {
+            background: red;
         }
 
         /* 
@@ -65,26 +70,31 @@
     <div class="example">
 
     </div>
+    <div class="example example2">
+
+    </div>
 
     <script>
         const example = document.querySelector('.example')
+        const example2 = document.querySelector('.example2')
         let left = 0;
         let direction = 1; // 1  | -1
-        let speed = 5;
+        // let speed = 5;
         const squareWidth = 100;
-        function move() {
+        function move(circle, speed, left, direction) {
             console.log(example)
             if (left + squareWidth >= window.innerWidth || left < 0) {
                 direction = direction * -1
             }
-            left = left + (direction * 5);
-            example.style.left = left + "px"
+            left = left + (direction * speed);
+            circle.style.left = left + "px";
         }
 
 
-
+        // 16:21 || 20:21
         const interval = setInterval(function () {
-            move()
+            // move(example, 1)
+            // move(example2, 5)
         }, 1)
     </script>
 

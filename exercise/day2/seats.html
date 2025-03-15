@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .seat-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* Space between rows */
+        }
+
+        .seat-row {
+            display: flex;
+            gap: 10px;
+            /* Space between seats */
+            justify-content: center;
+        }
+
+        .seat {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 12px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .seat.available {
+            background-color: gray;
+        }
+
+        .seat.occupied {
+            background-color: red;
+        }
+
+        .seat.vip {
+            border: 2px solid gold;
+        }
+
+        .seat.selected {
+            background-color: cyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="seat-container" class="seat-layout"></div>
+
+    <script>
+        const seatData = [{ "id": 1, "price": 8, "available": true, "isVip": true },
+        { "id": 2, "price": 8, "available": false, "isVip": true },
+        { "id": 3, "price": 9, "available": false, "isVip": true },
+        { "id": 4, "price": 7, "available": true, "isVip": false },
+        { "id": 5, "price": 10, "available": true, "isVip": true },
+        { "id": 6, "price": 5, "available": false, "isVip": true },
+        { "id": 7, "price": 5, "available": false, "isVip": true },
+        { "id": 8, "price": 9, "available": true, "isVip": true },
+        { "id": 9, "price": 8, "available": true, "isVip": true },
+        { "id": 10, "price": 7, "available": true, "isVip": false },
+        { "id": 11, "price": 6, "available": true, "isVip": true },
+        { "id": 12, "price": 9, "available": false, "isVip": false },
+        { "id": 13, "price": 6, "available": false, "isVip": false },
+        { "id": 14, "price": 6, "available": true, "isVip": true },
+        { "id": 15, "price": 6, "available": false, "isVip": true },
+        { "id": 16, "price": 7, "available": true, "isVip": false },
+        { "id": 17, "price": 9, "available": true, "isVip": false },
+        { "id": 18, "price": 9, "available": false, "isVip": true },
+        { "id": 19, "price": 10, "available": true, "isVip": true },
+        { "id": 20, "price": 9, "available": false, "isVip": true },
+        { "id": 21, "price": 8, "available": false, "isVip": true },
+        { "id": 22, "price": 5, "available": true, "isVip": false },
+        { "id": 23, "price": 8, "available": true, "isVip": false },
+        { "id": 24, "price": 8, "available": false, "isVip": true },
+        { "id": 25, "price": 5, "available": true, "isVip": false },
+        { "id": 26, "price": 9, "available": true, "isVip": false },
+        { "id": 27, "price": 6, "available": true, "isVip": false },
+        { "id": 28, "price": 10, "available": false, "isVip": false },
+        { "id": 29, "price": 10, "available": false, "isVip": true },
+        { "id": 30, "price": 8, "available": false, "isVip": false },
+        { "id": 31, "price": 7, "available": false, "isVip": false },
+        { "id": 32, "price": 5, "available": true, "isVip": false },
+        { "id": 33, "price": 6, "available": false, "isVip": true },
+        { "id": 34, "price": 6, "available": true, "isVip": true },
+        { "id": 35, "price": 8, "available": false, "isVip": false },
+        { "id": 36, "price": 8, "available": false, "isVip": true },
+        { "id": 37, "price": 6, "available": false, "isVip": true },
+        { "id": 38, "price": 7, "available": false, "isVip": false },
+        { "id": 39, "price": 7, "available": false, "isVip": false },
+        { "id": 40, "price": 6, "available": true, "isVip": false },
+        { "id": 41, "price": 10, "available": false, "isVip": true },
+        { "id": 42, "price": 7, "available": true, "isVip": true },
+        { "id": 43, "price": 7, "available": false, "isVip": true },
+        { "id": 44, "price": 8, "available": true, "isVip": false },
+        { "id": 45, "price": 6, "available": false, "isVip": false },
+        { "id": 46, "price": 5, "available": false, "isVip": true },
+        { "id": 47, "price": 6, "available": false, "isVip": true },
+        { "id": 48, "price": 6, "available": false, "isVip": false },
+        { "id": 49, "price": 7, "available": false, "isVip": false }]
+
+        const layoutTemplate = [6, 8, 8, 9, 9, 9]; // Number of seats per row
+        const seatContainer = document.getElementById('seat-container');
+
+        let seatIndex = 0;
+
+        // Render layout based on template
+        layoutTemplate.forEach((seatsInRow) => {
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'seat-row';
+
+            for (let i = 0; i < seatsInRow; i++) {
+                if (seatIndex >= seatData.length) break;
+
+                const seat = seatData[seatIndex];
+                const seatDiv = document.createElement('div');
+                seatDiv.className = `seat ${seat.available ? 'available' : 'occupied'} ${seat.isVip ? 'vip' : ''
+                    }`;
+                seatDiv.textContent = seat.id;
+                seatDiv.title = `ID: ${seat.id}, Price: $${seat.price}`;
+
+                // Handle seat click
+                seatDiv.addEventListener('click', () => {
+                    if (seat.available) {
+                        seatDiv.classList.toggle('selected');
+                    } else {
+                        alert('Seat is already occupied.');
+                    }
+                });
+
+                rowDiv.appendChild(seatDiv);
+                seatIndex++;
+            }
+
+            seatContainer.appendChild(rowDiv);
+        });
+    </script>
+</body>
+
+</html>

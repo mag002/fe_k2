@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        canvas {
+            background: rgba(0, 0, 0, 1);
+        }
+    </style>
+    <canvas id="myCanvas"></canvas>
+    <script>
+
+        let currentX, currentY = 0;
+        let positions = [];
+        let draw = false;
+
+        const canvas = document.querySelector('#myCanvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight
+
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'white'
+
+        function randomNumber(max) {
+            return Math.floor(Math.random() * max)
+        }
+
+        const drawCircle = (x, y) => {
+            // if (true) {
+            // draw 10 circle with 10 opacity
+
+            if (draw) {
+
+                ctx.globalCompositeOperation = 'source-over'
+
+                ctx.fillStyle = 'rgba(0,0,0,0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height)
+                ctx.globalCompositeOperation = 'lighter'
+
+                // ctx.fill();
+                ctx.beginPath()
+                console.log(currentX, currentY)
+                ctx.fillStyle = 'rgba(255,255,255,0.03)'
+                ctx.arc(currentX, currentY, 30, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath()
+            }
+            // }
+
+
+        }
+
+        document.addEventListener('mousemove', e => {
+            currentX = e.clientX;
+            currentY = e.clientY;
+            // console.log({ currentX, currentX })
+            if (positions.length > 50) {
+                positions = positions.slice(positions.length - 9)
+            }
+            // positions.push({
+            //     currentX,
+            //     currentY
+            // })
+            drawCircle()
+
+        })
+
+        document.addEventListener('mousedown', () => {
+            draw = true
+        })
+        document.addEventListener('mouseup', () => {
+            draw = false;
+
+        })
+    </script>
+</body>
+
+</html>

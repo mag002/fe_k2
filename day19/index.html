@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .example {
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            position: absolute;
+            left: 0px;
+            border-radius: 100%;
+            animation: pingpong 2s linear infinite alternate;
+        }
+    </style>
+    <div class="container">
+
+    </div>
+    <script>
+
+        const generateRandomColor = () => {
+            const hexaString = '0123456789abcdef';
+            let color = '#';
+            for (let index = 0; index < 6; index++) {
+                //                                                  0-15
+                const randomCharacter = hexaString[Math.floor(Math.random() * 16)];
+                color = color + randomCharacter;
+            }
+            return color;
+        }
+        const container = document.querySelector('.container');
+
+        function Circle(size, speed, x, y, directionX, directionY) {
+            this.htmlElement = null;
+            this.color = generateRandomColor();
+            this.size = size;
+            this.speed = speed;
+            this.directionX = directionX;
+            this.directionY = directionY;
+            this.x = x;
+            this.y = y;
+            this.interval = null;
+
+            this.generateHTML = function () {
+                const circle = document.createElement('div');
+                circle.classList.add('example');
+                circle.style.width = this.size + "px"
+                circle.style.height = this.size + "px"
+                circle.style.left = this.x + 'px';
+                circle.style.top = this.y + 'px';
+                circle.style.backgroundColor = this.color;
+                container.appendChild(circle);
+                this.htmlElement = circle;
+            }
+
+            // Step 1:
+            // Circle can move with X/Y Axis without running out of the screen
+            this.move = function () {
+                requestAnimationFrame(() => {
+                    if (this.x + this.size >= window.innerWidth || this.x <= 0) {
+                        this.directionX = this.directionX * -1
+                    }
+
+                    if (this.y + this.size >= window.innerHeight || this.y <= 0) {
+                        this.directionY = this.directionY * -1
+                    }
+
+                    this.x = this.x + (this.directionX * this.speed);
+                    this.y = this.y + (this.directionY * this.speed);
+                    this.htmlElement.style.left = this.x + 'px'
+                    this.htmlElement.style.top = this.y + 'px'
+
+
+                    // validate X axis
+                    // validate Y axis
+                    this.move()
+                })
+            }
+
+            this.stop = function () {
+                clearInterval(this.interval)
+            }
+
+
+        }
+
+
+
+
+
+        // 17:33 || 21:33
+
+        // ['reg','green','blue']
+
+
+        // const circleOne = new Circle(50, 5, 200, 300, -1, -1)
+        // circleOne.generateHTML();
+        // circleOne.move();
+
+        function randomDirection() {
+            return Math.random() > 0.5 ? 1 : -1
+        }
+
+        document.addEventListener('mousedown', function (e) {
+            // direction | - 1 1|
+
+
+        })
+
+
+
+
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sayHi = function () {
+        //         console.log(this.name + ' say hello!')
+        //     }
+        // }
+        // Person.prototype.sleep = function () {
+        //     console.log(this.name + ' go to sleep!')
+        // }
+
+    </script>
+</body>
+
+</html>

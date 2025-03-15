@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <style>
+        /*QUESTION: How to write this better for phone responsive?*/
+
+        body {
+            display: grid;
+            gap: 20px;
+            padding: 40px;
+            background-color: aquamarine;
+            height: 100vh;
+            grid-template-rows: 1fr 7fr;
+            /*QUESTION: How many fr is the maximum? 
+            I still need to scroll when setting auto 7fr?*/
+        }
+
+        .main {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 0.7fr 7fr 0.7fr;
+            /*QUESTION:number I got here is very estimated?*/
+        }
+
+        .feed {
+            display: grid;
+            gap: 20px;
+            grid-template-rows: repeat(7, 0.7fr);
+            /*QUESTION: there's no difference when I make 0.5fr, 1fr?*/
+        }
+
+        .feed-profile {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 0.5fr 6fr;
+        }
+
+        .sidebar2 {
+            display: grid;
+            gap: 20px;
+            grid-template-rows: 2fr 2.5fr 1fr;
+        }
+
+        .sidebar1 {
+            display: grid;
+            gap: 20px;
+            grid-template-rows: 8fr 1fr;
+        }
+
+        .header,
+        .sidebar1-detail1,
+        .feed-profile>div,
+        .sidebar2-detail1,
+        .sidebar2-detail2 {
+            background: rgb(211, 182, 182);
+            min-height: 50px;
+        }
+
+        .sidebar2-detail3 {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main">
+        <div class="sidebar1">
+            <div class="sidebar1-detail1"></div>
+            <div class="sidebar1-detail2"></div>
+        </div>
+        <div class="feed">
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="feed-profile">
+                <div></div>
+                <div></div>
+            </div>
+
+        </div>
+        <div class="sidebar2">
+            <div class="sidebar2-detail1"></div>
+            <div class="sidebar2-detail2"></div>
+            <div class="sidebar2-detail3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
